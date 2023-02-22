@@ -4,6 +4,8 @@ const app = express()    // a instancia do express dentro da constante app para 
 
 const port = 3000    // esse é o servidor para roda na porta 3000
 
+app.use(express.json())  // Permite ao express a trabalhar com JSON
+
 const ControllerCliente = require('./controllers/controller-cliente')   // esss é a importação da classe e chamada ao metodo das rotas
 ControllerCliente.rotas(app)
 
