@@ -1,5 +1,7 @@
 const Livro = require('../models/Livro')
 
+const { bdLivro } = require('../estrutura/bd')
+
 class ControllerLivro {
     static rotas(app) {
     app.get('/livro', ControllerLivro.listarLivro)
@@ -7,12 +9,13 @@ class ControllerLivro {
   }
 
   static listarLivro(req, res) {
-    res.send("Rota Get do Livro ativo")
+    res.send(bdLivro)
   }
 
   static cadastrarLivro(req, res) {
     const livro = new Livro(req.body.genero, req.body.diretora)
-    res.send(livro)
+    bdLivro.push(livro)
+    res.send(bdLivro)
   }
 }
   
